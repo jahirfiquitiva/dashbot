@@ -1,4 +1,3 @@
-require('dotenv').config();
 const Discord = require('discord.js');
 const github = require('./github');
 const filteredMessages = require('./filtered.json');
@@ -67,7 +66,5 @@ client.on('message', async (message) => {
     handleSimpleMessage(message);
   }
 });
-
-client.login(process.env.BOT_TOKEN || '');
 
 module.exports = client;

@@ -1,10 +1,9 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bot = require('./index');
+bot.login(process.env.BOT_TOKEN || '');
 
 const statusRoutes = require('./routes/status');
 const updatesRoutes = require('./routes/updates');

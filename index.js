@@ -50,7 +50,11 @@ const handleSimpleMessage = (message) => {
 };
 
 client.on('message', async (message) => {
-  const { cleanContent: text = '', author = {}, deleted } = message;
+  const { cleanContent: text = '', author = {}, deleted, type } = message;
+  if (type === 'PINS_ADD') {
+    message.delete().catch();
+    return;
+  }
   const actualAuthor = author.id || '';
   if (deleted || author.bot
     || actualAuthor.toString() === process.env.BOT_USER_ID.toString()) {
@@ -65,3 +69,5 @@ client.on('message', async (message) => {
 });
 
 client.login(process.env.BOT_TOKEN || '');
+
+module.exports = client;

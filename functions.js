@@ -1,13 +1,5 @@
-const Discord = require('discord.js');
 const github = require('./github');
 const filteredMessages = require('./filtered.json');
-
-const client = new Discord.Client();
-
-client.once('ready', () => {
-  // eslint-disable-next-line no-console
-  console.log('Ready!');
-});
 
 const handleCommands = async (message) => {
   const { cleanContent: text = '', channel } = message;
@@ -48,23 +40,7 @@ const handleSimpleMessage = (message) => {
   }
 };
 
-client.on('message', async (message) => {
-  const { cleanContent: text = '', author = {}, deleted, type } = message;
-  if (type === 'PINS_ADD') {
-    message.delete().catch();
-    return;
-  }
-  const actualAuthor = author.id || '';
-  if (deleted || author.bot
-    || actualAuthor.toString() === process.env.BOT_USER_ID.toString()) {
-    return;
-  }
-  if (text.startsWith(process.env.BOT_COMMAND_KEY)) {
-    // eslint-disable-next-line no-console
-    await handleCommands(message).catch((err) => console.error(err));
-  } else {
-    handleSimpleMessage(message);
-  }
-});
-
-module.exports = client;
+module.exports = {
+  handleSimpleMessage,
+  handleCommands,
+};

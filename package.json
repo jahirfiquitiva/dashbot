@@ -2,9 +2,10 @@
   "name": "dashbot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "discord.js",
   "scripts": {
     "start": "node app.js",
+    "worker": "export IS_WORKER=true || set IS_WORKER=true&& node app.js",
     "watch": "nodemon app.js"
   },
   "repository": {

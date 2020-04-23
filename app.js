@@ -20,6 +20,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/api/', (req, res) => {
+  return res.send({ success: true, alive: true, status: 'ok', much: 'wow' });
+});
+
 app.use('/api/updates', updatesRoutes);
 
 app.listen(port, () => {

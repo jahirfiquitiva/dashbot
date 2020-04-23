@@ -1,0 +1,38 @@
+[
+  {
+    "keywords": [
+      "crash"
+    ],
+    "response": [
+      "Logs or it never happened (on pastebin, del.dog, or similar)"
+    ]
+  },
+  {
+    "keywords": [
+      "warning"
+    ],
+    "response": [
+      "Warnings? Ignore them! :wink:"
+    ]
+  },
+  {
+    "keywords": [
+      "ad"
+    ],
+    "response": [
+      "If you want to add ads to the app, use the master branch.",
+      "You must know we do not provide any kind of help or support when doing so, as stated in the readme.",
+      "You are expected to have some development knowledge."
+    ]
+  },
+  {
+    "keywords": [
+      "issue",
+      "bug"
+    ],
+    "response": [
+      "Please open an issue on GitHub.",
+      "Be sure to add details and screenshots or recordings if possible"
+    ]
+  }
+]

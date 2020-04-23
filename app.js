@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const bot = require('./index');
 
+const statusRoutes = require('./routes/status');
 const updatesRoutes = require('./routes/updates');
 
 const port = process.env.PORT || 8080;
@@ -20,10 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/', (req, res) => {
-  return res.send({ success: true, alive: true, status: 'ok', much: 'wow' });
-});
-
+app.use('/api', statusRoutes);
 app.use('/api/updates', updatesRoutes);
 
 app.listen(port, () => {

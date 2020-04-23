@@ -18,7 +18,8 @@ const notifyUpdate = (req, res) => {
       const { cache: channels = [] } = req.discordClient.channels;
       const channel = channels.find((it) => it.name.toLowerCase() === repo.toLowerCase());
       if (channel) {
-        const downloadUrl = apk.toString() || `https://jahir.dev/gh-releases/${repo.toLowerCase()}`;
+        const downloadUrl =
+          (apk || `https://jahir.dev/gh-releases/${repo.toLowerCase()}`).toString();
         let messageBody = `**Changes:**\n${response.data.body || ''}`;
         messageBody += '\n\n**Useful links:**';
         messageBody += '\n* [How to update?](https://github.com/jahirfiquitiva/';

@@ -32,7 +32,7 @@ const handleSimpleMessage = (message) => {
   const { cleanContent: text = '' } = message;
   for (const filtered of filteredMessages) {
     const included = filtered.keywords.filter(
-      (kw) => text.toLowerCase().includes(kw.toLowerCase()));
+      (kw) => (new RegExp('\\b' + kw.toLowerCase() + '\\b').test(text.toLowerCase())));
     if (included.length > 0) {
       message.reply((filtered.response || []).join('\n'));
       break;

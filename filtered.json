@@ -1,7 +1,9 @@
 [
   {
     "keywords": [
-      "crash"
+      "crash",
+      "crashing",
+      "crashes"
     ],
     "response": [
       "Logs or it never happened (on pastebin, del.dog, or similar)"
@@ -17,7 +19,9 @@
   },
   {
     "keywords": [
-      "ad"
+      "ad",
+      "ads",
+      "admob"
     ],
     "response": [
       "If you want to add ads to the app, use the master branch.",
@@ -28,11 +32,23 @@
   {
     "keywords": [
       "issue",
-      "bug"
+      "issues",
+      "bug",
+      "bugs"
     ],
     "response": [
       "Please open an issue on GitHub.",
       "Be sure to add details and screenshots or recordings if possible"
+    ]
+  },
+  {
+    "keywords": [
+      "kts",
+      "gradle kts"
+    ],
+    "response": [
+      "You can ignore that warning.",
+      "Everything included in the dashboard will work normally."
     ]
   }
 ]

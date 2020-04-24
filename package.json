@@ -5,7 +5,7 @@
   "main": "discord.js",
   "scripts": {
     "start": "node app.js",
-    "worker": "export IS_WORKER=true || set IS_WORKER=true&& node app.js",
+    "worker": "export IS_WORKER=true || set IS_WORKER=true&& node discord.js",
     "watch": "nodemon app.js"
   },
   "repository": {

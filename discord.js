@@ -17,13 +17,16 @@ client.on('message', async (message) => {
     return;
   }
   const actualAuthor = author.id || '';
-  if (deleted || author.bot || actualAuthor.toString() === process.env.BOT_USER_ID.toString()) {
+  if (deleted || author.bot
+    || actualAuthor.toString() === (process.env.BOT_USER_ID || '').toString()
+    || actualAuthor.toString() === (process.env.JAHIR_USER_ID || '').toString()
+    || (author ? author.username || '' : '') === 'jahirfiquitiva') {
     return;
   }
   if (text.startsWith(process.env.BOT_COMMAND_KEY)) {
     await handleCommands(message).catch((err) => console.error(err));
   } else {
-    handleSimpleMessage(message);
+    handleSimpleMessage(message).catch((err) => console.error(err));
   }
 });
 

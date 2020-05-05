@@ -1,17 +1,18 @@
+/* eslint-disable no-console */
+require('dotenv').config();
+require('./telegram');
 const Discord = require('discord.js');
 const { handleCommands, handleSimpleMessage } = require('./functions');
 
 const client = new Discord.Client();
 
 client.once('ready', () => {
-  // eslint-disable-next-line no-console
   console.log('Discord bot is ready!!');
 });
 
 client.on('message', async (message) => {
   const { cleanContent: text = '', author = {}, deleted, type } = message;
   if (type === 'PINS_ADD') {
-    // eslint-disable-next-line no-console
     message.delete().catch((err) => console.error(err));
     return;
   }
@@ -20,13 +21,16 @@ client.on('message', async (message) => {
     return;
   }
   if (text.startsWith(process.env.BOT_COMMAND_KEY)) {
-    // eslint-disable-next-line no-console
     await handleCommands(message).catch((err) => console.error(err));
   } else {
     handleSimpleMessage(message);
   }
 });
 
-client.login(process.env.BOT_TOKEN || '');
+try {
+  client.login(process.env.BOT_TOKEN || '')
+    .catch(() => {});
+} catch (e) {
+}
 
 module.exports = client;

@@ -20,7 +20,8 @@ const actualMarkup = JSON.stringify(markup);
 const messages = [
   '📢 *Friendly Daily Reminder* 📢\n',
   'We recently created a Discord Server for dashboards support and news.',
-  'We encourage you to join it as it is more organized and stuff',
+  'This group will be deleted in favor of said server',
+  'Please join Discord as it is what we\'ll be using from now on.',
   '\nSee you there! 😀',
 ];
 const actualMessage = encodeURIComponent(messages.join('\n'));

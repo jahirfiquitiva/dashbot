@@ -1,10 +1,16 @@
 /* eslint-disable no-console */
 require('dotenv').config();
-require('./telegram');
 const Discord = require('discord.js');
 const { handleCommands, handleSimpleMessage } = require('./functions');
 
 const client = new Discord.Client();
+
+const jahirSentMessage = (actualAuthor, author) => {
+  // TODO: Enable if testing
+  // return false;
+  return actualAuthor.toString() === (process.env.JAHIR_USER_ID || '').toString()
+    || (author ? author.username || '' : '') === 'jahirfiquitiva';
+};
 
 client.once('ready', () => {
   console.log('Discord bot is ready!!');
@@ -19,20 +25,21 @@ client.on('message', async (message) => {
   const actualAuthor = author.id || '';
   if (deleted || author.bot
     || actualAuthor.toString() === (process.env.BOT_USER_ID || '').toString()
-    || actualAuthor.toString() === (process.env.JAHIR_USER_ID || '').toString()
-    || (author ? author.username || '' : '') === 'jahirfiquitiva') {
+    || jahirSentMessage(actualAuthor, author)) {
     return;
   }
   if (text.startsWith(process.env.BOT_COMMAND_KEY)) {
     await handleCommands(message).catch((err) => console.error(err));
   } else {
-    handleSimpleMessage(message).catch((err) => console.error(err));
+    await handleSimpleMessage(message).catch((err) => console.error(err));
   }
 });
 
 try {
   client.login(process.env.BOT_TOKEN || '')
-    .catch(() => {});
+    .catch(() => {
+      console.error('Error connecting to Discord');
+    });
 } catch (e) {
 }
 

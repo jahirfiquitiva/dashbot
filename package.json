@@ -5,7 +5,9 @@
   "main": "discord.js",
   "scripts": {
     "start": "node discord.js",
-    "watch": "nodemon discord.js"
+    "watch": "nodemon discord.js",
+    "lint": "./node_modules/eslint/bin/eslint.js . -c .eslintrc.json --ignore-path .eslintignore",
+    "test": "npm run lint && echo \"Unit tests coming soon\""
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,7 @@
   },
   "homepage": "https://github.com/jahirfiquitiva/dashbot#readme",
   "devDependencies": {
-    "@bpsmart/eslint-config-base": "0.0.1",
+    "@bpsmart/eslint-config-base": "0.0.7",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",

@@ -6,12 +6,13 @@
       "crashes"
     ],
     "response": [
-      "Logs or it never happened (on pastebin, del.dog, or similar)"
+      "Logs or it never happened! (Please use pastebin, del.dog, or similar)"
     ]
   },
   {
     "keywords": [
-      "warning"
+      "warning",
+      "warn"
     ],
     "response": [
       "Warnings? Ignore them! :wink:"

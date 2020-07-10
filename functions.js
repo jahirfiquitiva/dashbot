@@ -20,10 +20,11 @@ const wikiMessage = 'Be sure to check the project wiki:\n'
 
 const donationMessage = '**Available donation options:**\n'
   + '* [GitHub Sponsors](https://github.com/sponsors/jahirfiquitiva)\n'
-  + '* [PayPal](https://paypal.me/jahirfiquitiva)\n'
-  + '* [Buy me a pizza](https://github.com/sponsors/jahirfiquitiva)\n'
+  + '* [Buy me a pizza](https://buymeacoff.ee/jahirfiquitiva)\n'
+  + '* [PayPal](https://jahir.xyz/DonatePayPal)\n'
   + 'Thanks in advance! :hugging:\n\n'
-  + `*Don't forget to request the \`supporter\` role in ${channels.general} after you donate  :wink:*`;
+  + '*Don\'t forget to request the `supporter` role in'
+  + `${channels.general} after you donate  :wink:*`;
 
 const helpMessage = `
 :wave:  ***HELLO, THIS IS DASHBOT!***  :robot:
@@ -54,6 +55,7 @@ const helpMessage = `
 Thanks in advance! :hugging:**
 `;
 
+// eslint-disable-next-line max-statements
 const handleCommands = async (message) => {
   const { cleanContent: text = '', channel } = message;
   const { name: channelName } = channel;

@@ -77,11 +77,6 @@ const sendWeeklyReminder = async () => {
   }
 };
 
-setInterval(sendWeeklyReminder, (7 * 24 * 60 * 60 * 1000));
-
-sendWeeklyReminder()
-  .catch((e) => {
-    console.error(e);
-  });
+setInterval(sendWeeklyReminder, 604800);
 
 module.exports = client;

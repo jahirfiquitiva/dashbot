@@ -1,10 +1,15 @@
 /* eslint-disable no-console */
 require('dotenv').config();
+const scheduler = require('node-schedule');
 const got = require('got');
 const Discord = require('discord.js');
 const { handleCommands, handleSimpleMessage } = require('./functions');
 
 const { REMINDERS_HOOK: remindersHook = '' } = process.env;
+
+const everySevenDays = '0 0 * * 0';
+// const everyThreeMinutes = '*/3 * * * *';
+const logDivider = '=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=';
 
 const reminderMessage = 'Here\'s just a friendly reminder that if you\'ve found the dashboards '
   + 'or the [setup website](https://dashbud.dev) useful, '
@@ -77,11 +82,17 @@ const sendWeeklyReminder = async () => {
   }
 };
 
-/*
-sendWeeklyReminder()	
-  .catch((e) => {	
-    console.error(e);	
-  });
-*/
+sendWeeklyReminder()
+  .then(() => {
+    const job = scheduler.scheduleJob(everySevenDays, (fireDate) => {
+      console.log(logDivider);
+      console.log(`This job was supposed to run @ ${fireDate.toISOString()}`);
+      sendWeeklyReminder()
+        .then(() => { console.log(logDivider); })
+        .catch((e) => { console.error((e)); });
+    });
+    console.log(`Reminders job scheduled? ${!!job}`);
+  })
+  .catch((e) => { console.error(e); });
 
 module.exports = client;

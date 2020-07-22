@@ -18,13 +18,15 @@ const wikiMessage = 'Be sure to check the project wiki:\n'
   + '* [Kuper Wiki](https://github.com/jahirfiquitiva/Kuper/wiki)\n'
   + '* [Blueprint Wiki](https://github.com/jahirfiquitiva/Blueprint/wiki)';
 
-const donationMessage = '**Available donation options:**\n'
+const donationMessage = 'If you\'ve found the dashboards '
+  + 'or the [setup website](https://dashbud.dev) useful, '
+  + 'you can support my work by donating via:\n\n'
   + '* [GitHub Sponsors](https://github.com/sponsors/jahirfiquitiva)\n'
   + '* [Buy me a pizza](https://buymeacoff.ee/jahirfiquitiva)\n'
   + '* [PayPal](https://jahir.xyz/DonatePayPal)\n'
   + 'Thanks in advance! :hugging:\n\n'
-  + '*Don\'t forget to request the `supporter` role in'
-  + `${channels.general} after you donate  :wink:*`;
+  + '> *Don\'t forget to request the `supporter` role in <#704341896654225478> after you donate*\n'
+  + '> *Also, keep in mind GitHub sponsors get some rewards!*  :wink:';
 
 const helpMessage = `
 :wave:  ***HELLO, THIS IS DASHBOT!***  :robot:
@@ -48,7 +50,7 @@ const helpMessage = `
 
 ***ROLES DESCRIPTION***
 :one: \`admin\`  →  Some recognized developers and designers who have enough experience to provide support and moderate the server. **Don't ask for it.**
-:two: \`supporter\`  →  You get this when you donate or have donated before. Send a message in ${channels.general} if you have and want it.
+:two: \`supporter\`  →  You get this when you donate or have donated before. Send a message in ${channels.random} if you have and want it.
 :three: \`friends\`  →  I didn't want to create a new server to have fun with close friends :sweat_smile:
 
 **Please consider donating to support future development. Just use the \`?d\` command.

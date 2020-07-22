@@ -18,8 +18,8 @@ const reminderMessage = 'Here\'s just a friendly reminder that if you\'ve found 
   + '* [Buy me a pizza](https://buymeacoff.ee/jahirfiquitiva) (one-time or monthly)\n'
   + '* [PayPal](https://jahir.xyz/DonatePayPal) (one-time)\n\n'
   + 'Thanks in advance! :hugging:\n\n'
-  + '> *Don\'t forget to request the `supporter` role in <#702900511963086981> after you donate*\n'
-  + '> *Also, GitHub sponsors get some rewards!*  :wink:';
+  + '> *Don\'t forget to request the `supporter` role in <#704341896654225478> after you donate*\n'
+  + '> *Also, keep in mind GitHub sponsors get some rewards!*  :wink:';
 
 const client = new Discord.Client();
 

@@ -1,7 +1,7 @@
 {
   "name": "dashbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Discord bot created for JF's Dashboards Support server",
   "main": "discord.js",
   "scripts": {
     "start": "node discord.js",
@@ -20,20 +20,20 @@
   },
   "homepage": "https://github.com/jahirfiquitiva/dashbot#readme",
   "devDependencies": {
-    "@bpsmart/eslint-config-base": "0.0.7",
-    "eslint": "^6.8.0",
+    "@bpsmart/eslint-config-base": "0.0.9",
+    "eslint": "^7.5.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.4"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
-    "got": "^11.5.0",
+    "got": "^11.5.1",
     "node-schedule": "^1.3.2"
   }
 }

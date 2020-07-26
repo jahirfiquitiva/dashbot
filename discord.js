@@ -82,6 +82,7 @@ const sendWeeklyReminder = async () => {
   }
 };
 
+/*
 sendWeeklyReminder()
   .then(() => {
     const job = scheduler.scheduleJob(everySevenDays, (fireDate) => {
@@ -94,5 +95,6 @@ sendWeeklyReminder()
     console.log(`Reminders job scheduled? ${!!job}`);
   })
   .catch((e) => { console.error(e); });
+*/
 
 module.exports = client;

@@ -15,7 +15,7 @@
       "warn"
     ],
     "response": [
-      "Warnings? Ignore them! :wink:"
+      "Warnings? Just ignore them! :wink:"
     ]
   },
   {
@@ -25,9 +25,8 @@
       "admob"
     ],
     "response": [
-      "If you want to add ads to the app, use the master branch.",
-      "You must know we do not provide any kind of help or support when doing so, as stated in the readme.",
-      "You are expected to have some development knowledge."
+      "If you want to add ads to the app, feel free to use the master branch.",
+      "Unfortunately we do not provide any kind of help or support when doing so, as stated in the readme."
     ]
   },
   {
@@ -39,7 +38,7 @@
     ],
     "response": [
       "Please open an issue on GitHub.",
-      "Be sure to add details and screenshots or recordings if possible"
+      "Be sure to add details and screenshots or recordings if possible."
     ]
   },
   {

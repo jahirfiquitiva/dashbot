@@ -8,33 +8,41 @@ DashBot is a discord bot I created for my [dashboards support server](https://di
 * `?version x`:
 
     Bot will reply with the latest version of x, x being either `Frames`, `Kuper` or `Blueprint`.
+    
     If x isn't defined or doesn't match any of those 3, then it will reply with the latest version of all 3 dashboards.
+    
     Alternative commands: `?versions x`, `?v x`
     
 * `?update x`  
 
     Bot will reply with the how to update wiki link of x, x being either `Frames`, `Kuper` or `Blueprint`.
+    
     If x isn't defined or doesn't match any of those 3, then it will reply with the latest version of all 3 dashboards.
+    
     Alternative commands: `?updates x`, `?u x`
 
 * `?setup`
     
     Bot will reply with some info regarding how to setup the dashboards, more specifically, links to their wikis and a link to [`dashbud.dev`](https://dashbud.dev).
+    
     Alternative commands: `?bud`, `?dashbud`, `?config`
 
 * `?wiki`
     
     Bot will reply with links to the dashboards wikis.
+    
     Alternative commands: `?wikis`, `?w`
 
 * `?donate`
     
     Bot will reply with some information regarding how to donate and support my work
+    
     Alternative commands: `?support`, `?d`, `?s`
 
 * `?help`
     
     Bot will reply with some information about the server and the commands it can run
+    
     Alternative commands: `?what`, `?h`
 
 ### Keywords

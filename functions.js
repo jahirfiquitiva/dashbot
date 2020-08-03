@@ -112,6 +112,7 @@ const handleCommands = async (message) => {
       });
     }
     case 'd':
+    case 's':
     case 'donate':
     case 'support': {
       return message.channel.send({

@@ -31,6 +31,13 @@ client.on('message', async (message) => {
     return;
   }
 
+  // Quick check if Jahir is mentioned, and if so, tell them to stop
+  message.mentions.users.each(user => {
+    if(user.username === 'jahirfiquitiva') {
+      message.reply(`Please don't @ Jahir, he doesn't like that. He'll respond when he has time.`)
+    }
+  })
+
   // If message is a command handle it, otherwise check if message includes some keywords
   // and reply accordingly
   if (text.startsWith(process.env.BOT_COMMAND_KEY)) {

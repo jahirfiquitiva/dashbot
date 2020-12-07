@@ -34,7 +34,7 @@ client.on('message', async (message) => {
   // Quick check if Jahir is mentioned, and if so, tell them to stop
   message.mentions.users.each(user => {
     if(user.username === 'jahirfiquitiva') {
-      message.reply(`Please don't @ Jahir, he doesn't like that. He'll respond when he has time.`)
+      message.reply(`Please don't mention Jahir; he checks this server regularly and will get back to you as soon as he can.`);
     }
   })
 

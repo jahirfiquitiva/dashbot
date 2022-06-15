@@ -7,7 +7,7 @@
     "start": "node discord.js",
     "watch": "nodemon discord.js",
     "lint": "./node_modules/eslint/bin/eslint.js . -c .eslintrc.json --ignore-path .eslintignore",
-    "test": "npm run lint"
+    "test": "yarn lint"
   },
   "repository": {
     "type": "git",
@@ -20,18 +20,19 @@
   },
   "homepage": "https://github.com/jahirfiquitiva/dashbot#readme",
   "devDependencies": {
-    "@bpsmart/eslint-config-base": "0.0.9",
-    "eslint": "^7.5.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
+    "@bpsmart/eslint-config-base": "0.1.0",
+    "eslint": "^8.17.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.4"
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0"
+    "axios": "^0.27.2",
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "redaxios": "^0.5.0"
   }
 }

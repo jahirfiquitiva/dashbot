@@ -1521,11 +1521,6 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-redaxios@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/redaxios/-/redaxios-0.5.0.tgz#321aca81880b14da2fd83be82731876a1513e83b"
-  integrity sha512-qmEJjQF0igI+H9SDKlQdWz6XskJ5zm2s6KPY0AvtlbQtRNe1OcuJIfxGmySDCpoU18/UtC7zWEFIWpkHMZ1/Ow==
-
 regexp.prototype.flags@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.4.3.tgz#87cab30f80f66660181a3bb7bf5981a872b367ac"

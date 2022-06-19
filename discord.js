@@ -26,7 +26,7 @@ client.once('ready', () => {
   console.log('Discord bot is ready!!');
 });
 
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
   const { cleanContent: text = '', author = {}, authorId, deleted, type, reference } = message;
 
   if (reference != null) {

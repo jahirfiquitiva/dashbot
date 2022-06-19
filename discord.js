@@ -17,11 +17,11 @@ const client = new Discord.Client({
 const deletedMessages = new WeakSet();
 
 export function isMessageDeleted(message) {
-	return deletedMessages.has(message);
+  return deletedMessages.has(message);
 }
 
 export function markMessageAsDeleted(message) {
-	deletedMessages.add(message);
+  deletedMessages.add(message);
 }
 
 // Quick validation of whether a message was sent by Jahir or not
@@ -36,7 +36,7 @@ client.once('ready', () => {
   console.log('Discord bot is ready!!');
 });
 
-client.on('messageCreate', async (message) => {
+client.on('messageCreate', async message => {
   const { cleanContent: text = '', author = {}, authorId, type, reference } = message;
 
   if (reference != null) {
@@ -84,7 +84,7 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-client.on('messageDelete', async (message) => {
+client.on('messageDelete', async message => {
   markMessageAsDeleted(message);
 });
 

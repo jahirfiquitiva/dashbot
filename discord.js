@@ -14,6 +14,16 @@ const client = new Discord.Client({
   intents: myIntents,
 });
 
+const deletedMessages = new WeakSet();
+
+export function isMessageDeleted(message) {
+	return deletedMessages.has(message);
+}
+
+export function markMessageAsDeleted(message) {
+	deletedMessages.add(message);
+}
+
 // Quick validation of whether a message was sent by Jahir or not
 const jahirSentMessage = (actualAuthor, author) => {
   return (
@@ -27,7 +37,7 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', async (message) => {
-  const { cleanContent: text = '', author = {}, authorId, deleted, type, reference } = message;
+  const { cleanContent: text = '', author = {}, authorId, type, reference } = message;
 
   if (reference != null) {
     const { messageId } = reference;
@@ -46,7 +56,7 @@ client.on('messageCreate', async (message) => {
   const actualAuthor = author.id || authorId || '';
   // Do not reply to other bots, if the message was deleted
   if (
-    deleted ||
+    isMessageDeleted(message) ||
     author.bot ||
     actualAuthor.toString() === (process.env.BOT_USER_ID || '').toString()
   ) {
@@ -72,6 +82,10 @@ client.on('messageCreate', async (message) => {
   } else {
     await handleSimpleMessage(message).catch(console.error);
   }
+});
+
+client.on('messageDelete', async (message) => {
+  markMessageAsDeleted(message);
 });
 
 // Initialize discord client

@@ -29,18 +29,15 @@ client.once('ready', () => {
 client.on('message', async (message) => {
   const { cleanContent: text = '', author = {}, authorId, deleted, type, reference } = message;
 
-  /*
   if (reference != null) {
     const { messageId } = reference;
     const referencedMessage = await message.channel.messages.fetch(messageId).catch(console.error);
+    console.log(referencedMessage);
     if (referencedMessage) {
       const { type, authorId } = referencedMessage;
-      if (type == 'REPLY') {
-        // TODO: ??
-      }
+      var referenceToJahir = authorId === jahirUserId;
     }
   }
-  */
 
   if (type === 'PINS_ADD') {
     message.delete().catch(console.error);
@@ -61,7 +58,7 @@ client.on('message', async (message) => {
     return user.username === 'jahirfiquitiva';
   });
   if (mentionedJahir) {
-    if (!jahirSentMessage(actualAuthor, author)) {
+    if (!jahirSentMessage(actualAuthor, author) && !referenceToJahir) {
       message.reply(
         `Please don't mention Jahir; he checks this server regularly and will get back to you as soon as he can.`
       );

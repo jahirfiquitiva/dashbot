@@ -1,28 +1,28 @@
 /* eslint-disable no-console */
 require('dotenv').config();
-const Discord = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const { handleCommands, handleSimpleMessage } = require('./functions');
 
 const jahirUserId = (process.env.JAHIR_USER_ID || '').toString();
 
-const myIntents = new Discord.Intents();
-myIntents.add(Discord.Intents.FLAGS.GUILDS);
-myIntents.add(Discord.Intents.FLAGS.GUILD_WEBHOOKS);
-myIntents.add(Discord.Intents.FLAGS.GUILD_MESSAGES);
-
-const client = new Discord.Client({
-  intents: myIntents,
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildWebhooks,
+    GatewayIntentBits.MessageContent,
+  ],
 });
 
 const deletedMessages = new WeakSet();
 
-export function isMessageDeleted(message) {
+const isMessageDeleted = (message) => {
   return deletedMessages.has(message);
-}
+};
 
-export function markMessageAsDeleted(message) {
+const markMessageAsDeleted = (message) => {
   deletedMessages.add(message);
-}
+};
 
 // Quick validation of whether a message was sent by Jahir or not
 const jahirSentMessage = (actualAuthor, author) => {
@@ -36,16 +36,17 @@ client.once('ready', () => {
   console.log('Discord bot is ready!!');
 });
 
-client.on('messageCreate', async message => {
+client.on('messageCreate', async (message) => {
   const { cleanContent: text = '', author = {}, authorId, type, reference } = message;
 
+  let referenceToJahir = false;
   if (reference != null) {
     const { messageId } = reference;
     const referencedMessage = await message.channel.messages.fetch(messageId).catch(console.error);
-    console.log(referencedMessage);
     if (referencedMessage) {
       const { type, authorId } = referencedMessage;
-      var referenceToJahir = authorId === jahirUserId;
+      console.table({ type, authorId, referencedMessage });
+      referenceToJahir = authorId === jahirUserId;
     }
   }
 
@@ -80,11 +81,12 @@ client.on('messageCreate', async message => {
   if (text.startsWith(process.env.BOT_COMMAND_KEY)) {
     await handleCommands(message).catch(console.error);
   } else {
+    if (jahirSentMessage(actualAuthor, authorId)) return;
     await handleSimpleMessage(message).catch(console.error);
   }
 });
 
-client.on('messageDelete', async message => {
+client.on('messageDelete', async (message) => {
   markMessageAsDeleted(message);
 });
 

@@ -44,8 +44,7 @@ client.on('messageCreate', async (message) => {
     const { messageId } = reference;
     const referencedMessage = await message.channel.messages.fetch(messageId).catch(console.error);
     if (referencedMessage) {
-      const { type, authorId } = referencedMessage;
-      console.table({ type, authorId, referencedMessage });
+      const { authorId } = referencedMessage;
       referenceToJahir = authorId === jahirUserId;
     }
   }

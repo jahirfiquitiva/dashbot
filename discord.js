@@ -14,6 +14,16 @@ const client = new Discord.Client({
   intents: myIntents,
 });
 
+const deletedMessages = new WeakSet();
+
+export function isMessageDeleted(message) {
+  return deletedMessages.has(message);
+}
+
+export function markMessageAsDeleted(message) {
+  deletedMessages.add(message);
+}
+
 // Quick validation of whether a message was sent by Jahir or not
 const jahirSentMessage = (actualAuthor, author) => {
   return (
@@ -26,21 +36,18 @@ client.once('ready', () => {
   console.log('Discord bot is ready!!');
 });
 
-client.on('message', async (message) => {
-  const { cleanContent: text = '', author = {}, authorId, deleted, type, reference } = message;
+client.on('messageCreate', async message => {
+  const { cleanContent: text = '', author = {}, authorId, type, reference } = message;
 
-  /*
   if (reference != null) {
     const { messageId } = reference;
     const referencedMessage = await message.channel.messages.fetch(messageId).catch(console.error);
+    console.log(referencedMessage);
     if (referencedMessage) {
       const { type, authorId } = referencedMessage;
-      if (type == 'REPLY') {
-        // TODO: ??
-      }
+      var referenceToJahir = authorId === jahirUserId;
     }
   }
-  */
 
   if (type === 'PINS_ADD') {
     message.delete().catch(console.error);
@@ -49,7 +56,7 @@ client.on('message', async (message) => {
   const actualAuthor = author.id || authorId || '';
   // Do not reply to other bots, if the message was deleted
   if (
-    deleted ||
+    isMessageDeleted(message) ||
     author.bot ||
     actualAuthor.toString() === (process.env.BOT_USER_ID || '').toString()
   ) {
@@ -61,7 +68,7 @@ client.on('message', async (message) => {
     return user.username === 'jahirfiquitiva';
   });
   if (mentionedJahir) {
-    if (!jahirSentMessage(actualAuthor, author)) {
+    if (!jahirSentMessage(actualAuthor, author) && !referenceToJahir) {
       message.reply(
         `Please don't mention Jahir; he checks this server regularly and will get back to you as soon as he can.`
       );
@@ -75,6 +82,10 @@ client.on('message', async (message) => {
   } else {
     await handleSimpleMessage(message).catch(console.error);
   }
+});
+
+client.on('messageDelete', async message => {
+  markMessageAsDeleted(message);
 });
 
 // Initialize discord client

@@ -1,9 +1,17 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
+const http = require('http');
 const { handleCommands, handleSimpleMessage } = require('./functions');
 
 const jahirUserId = (process.env.JAHIR_USER_ID || '').toString();
+const httpPort = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  // Sending the response
+  res.write('Hello, World! - Dashbot here');
+  res.end();
+});
 
 const client = new Client({
   intents: [
@@ -33,16 +41,27 @@ const jahirSentMessage = (actualAuthor, author) => {
 };
 
 client.once('ready', () => {
-  console.log('Discord bot is ready!!');
+  console.log('Dashbot is ready!!');
+  server.listen(httpPort, () => {
+    console.log('Dashbot HTTP Server is ready!!');
+  });
 });
 
 client.on('messageCreate', async (message) => {
-  const { cleanContent: text = '', author = {}, authorId, type, reference } = message;
+  const {
+    cleanContent: text = '',
+    author = {},
+    authorId,
+    type,
+    reference,
+  } = message;
 
   let referenceToJahir = false;
   if (reference != null) {
     const { messageId } = reference;
-    const referencedMessage = await message.channel.messages.fetch(messageId).catch(console.error);
+    const referencedMessage = await message.channel.messages
+      .fetch(messageId)
+      .catch(console.error);
     if (referencedMessage) {
       const { authorId } = referencedMessage;
       referenceToJahir = authorId === jahirUserId;
@@ -70,7 +89,7 @@ client.on('messageCreate', async (message) => {
   if (mentionedJahir) {
     if (!jahirSentMessage(actualAuthor, author) && !referenceToJahir) {
       message.reply(
-        `Please don't mention Jahir; he checks this server regularly and will get back to you as soon as he can.`
+        `Please don't mention Jahir; he checks this server regularly and will get back to you as soon as he can.`,
       );
     }
   }

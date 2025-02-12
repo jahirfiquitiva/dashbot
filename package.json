@@ -21,17 +21,18 @@
   "homepage": "https://github.com/jahirfiquitiva/dashbot#readme",
   "devDependencies": {
     "@bpsmart/eslint-config-base": "0.1.1",
-    "eslint": "^8.55.0",
+    "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-standard": "^4.1.0",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.1.9"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1"
-  }
+    "axios": "^1.7.9",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  },
+  "packageManager": "yarn@4.6.0"
 }

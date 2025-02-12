@@ -1,4 +1,4 @@
 providers = ["..."]
 
-[phases.setup]
-cmds = ["...", "yarn set version 4.6.0"]
+[phases.install]
+cmds = ["yarn set version 4.6.0", "..."]
